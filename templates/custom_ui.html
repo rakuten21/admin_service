@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content %}
+<h2>Custom UI Settings</h2>
+<form
+  method="POST"
+  action="{{ url_for('ui_bp.custom_ui') }}"
+  enctype="multipart/form-data"
+>
+  <label for="color">System Color:</label>
+  <input
+    type="color"
+    id="color"
+    name="color"
+    value="{{ settings.color if settings else '#ffffff' }}"
+  />
+</form>
+
+{% endblock %}

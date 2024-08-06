@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block content %}
+<h2>Role Management</h2>
+<form method="POST" action="{{ url_for('role_bp.add_role') }}">
+  <!-- Add role form fields -->
+  <button type="submit">Add Role</button>
+</form>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Role Name</th>
+      <th>Privileges</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for role in roles %}
+    <tr>
+      <td>{{ role.id }}</td>
+      <td>{{ role.role_name }}</td>
+      <td>{{ role.privileges }}</td>
+      <td>
+        <a href="{{ url_for('role_bp.delete_role', id=role.id) }}">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
